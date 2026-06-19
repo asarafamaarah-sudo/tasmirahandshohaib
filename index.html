@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasmirah & Shohaib · Wedding Invitation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Invitation Images -->
+        <div class="invitation-section">
+            <img src="images/invite1.jpeg" alt="Wedding Invitation Page 1">
+        </div>
+
+        <div class="invitation-section">
+            <img src="images/invite2.jpeg" alt="Wedding Invitation Page 2">
+        </div>
+
+        <!-- Venue Details -->
+        <div class="venue-details">
+            <p class="venue-name">🕌 Musjid Noorul Mustapha</p>
+            <p>9 36TH Ave, Umhlatuzana Township</p>
+            <p>Chatsworth, 4054</p>
+            <p style="font-size:12px; color:#9d7c2f; margin-top:8px;">📅 Saturday, 26th September 2026 · 5:00 PM</p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons">
+            <a href="https://maps.google.com/maps?q=Musjid+Noorul+Mustapha+9+36TH+Ave+Umhlatuzana+Township+Chatsworth+4054" target="_blank" class="btn">
+                📍 Get Directions
+            </a>
+
+            <button class="btn btn-secondary" id="rsvpButton">
+                ✅ RSVP
+            </button>
+        </div>
+
+        <!-- Admin Section (for the couple) -->
+        <div class="admin-section">
+            <span class="label">✦ Admin ✦</span>
+            <div>
+                <button class="admin-btn" id="downloadBtn">
+                    📥 Download RSVPs <span class="rsvp-count" id="rsvpCount">0</span>
+                </button>
+                <button class="admin-btn" id="clearBtn" style="color:#a0523d; border-color:#a0523d;">
+                    🗑️ Clear All
+                </button>
+            </div>
+            <div class="admin-hint">
+                Press <kbd>D</kbd> key to download RSVPs
+            </div>
+        </div>
+
+        <footer>
+            Kindly RSVP by 15th August 2026
+        </footer>
+    </div>
+
+    <!-- RSVP Modal -->
+    <div id="rsvpModal" class="modal">
+        <div class="modal-content">
+            <button class="close" id="closeModal">&times;</button>
+            <h2>✨ RSVP ✨</h2>
+            <p class="sub">We look forward to celebrating with you</p>
+            <form id="rsvpForm">
+                <input type="text" id="fullName" placeholder="Your full name" required 
+                <select id="attending">
+                    <option value="yes">Will attend with joy ✨</option>
+                    <option value="no">Unable to attend 💔</option>
+                </select>
+                <input type="number" id="guests" placeholder="Number of guests (including you)" min="1" max="10" value="1">
+                <button type="submit" class="submit-btn">Send RSVP</button>
+            </form>
+            <p style="font-size:12px; color:#aaa; margin-top:15px;">Your response will be saved privately</p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">✨ RSVP recorded! Thank you ✨</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

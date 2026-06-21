@@ -23,32 +23,32 @@
 
 <body>
 
-<!-- Floral overlay background -->
+<!-- Floating Petals Background -->
 <div id="petals"></div>
 
 <!-- Music -->
 <audio id="bgMusic" loop>
-    <source src="yuor-nasheed.mp3.mpeg" type="audio/mpeg">
+    <source src="your-nasheed.mp3.mpeg" type="audio/mpeg">
 </audio>
 
 <button id="musicBtn" class="music-btn">♫ Play Nasheed</button>
 
-<!-- OPENING -->
+<!-- OPENING SCREEN WITH ENVELOPE -->
 <div id="openingScreen">
 
     <div class="center">
 
         <p class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
 
-        <!-- REAL ENVELOPE IMAGE -->
         <div class="envelope-container" id="envelope">
 
-            <img src="envelope.jpeg" class="envelope-img" alt="Envelope"/>
+            <!-- YOUR ENVELOPE IMAGE -->
+            <img src="envelope.jpeg" class="envelope-img" alt="Envelope" id="envelopeImg"/>
 
-            <!-- Wax Seal -->
+            <!-- Clickable Wax Seal (positioned on top of the envelope) -->
             <button id="openInvite" class="wax-seal">✦</button>
 
-            <!-- Hidden Letter -->
+            <!-- Hidden Letter that appears when envelope opens -->
             <div class="letter">
                 <p>You are invited to the Nikah of</p>
                 <h1>Tasmirah</h1>
@@ -59,13 +59,13 @@
 
         </div>
 
-        <p class="tap">Tap wax seal to open</p>
+        <p class="tap">✦ Tap the wax seal to open ✦</p>
 
     </div>
 </div>
 
-<!-- MAIN -->
-<main id="mainContent">
+<!-- MAIN CONTENT (hidden until envelope opens) -->
+<main id="mainContent" style="display:none;">
 
     <section class="hero fade-in">
 

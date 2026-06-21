@@ -11,137 +11,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasmirah & Shohaib - Wedding Invitation</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
+<title>Tasmirah & Shohaib | Wedding Invitation</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
-
-    <!-- Smooth Scroll Polyfill for older browsers -->
-    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js">
-    </script>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- ====== OPENING SCREEN ====== -->
-    <section class="hero" id="home">
+<!-- Intro Screen -->
+<div id="introScreen"></div>
 
+<!-- Floating Petals -->
+<div id="petals"></div>
+
+<!-- Music -->
+<audio id="bgMusic" loop>
+    <source src="audio/wedding.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" class="music-btn">♫ Play Nasheed</button>
+
+<!-- Opening Screen -->
+<div id="openingScreen">
+
+    <div class="opening-content">
+
+        <p class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+
+        <div class="envelope-wrapper">
+
+            <div class="envelope" id="envelope">
+
+                <div class="envelope-flap"></div>
+
+                <div class="letter">
+                    <p>You are invited to the Nikah of</p>
+
+                    <h1 class="letter-name">Tasmirah</h1>
+                    <div class="ampersand">&</div>
+                    <h1 class="letter-name">Shohaib</h1>
+
+                    <p>26 September 2026</p>
+                </div>
+
+                <button id="openInvite" class="wax-seal">✦</button>
+
+            </div>
+        </div>
+
+        <p class="tap-text">Tap wax seal to open</p>
+
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main id="mainContent">
+
+    <section class="hero fade-in">
         <div class="hero-content">
 
-            <h3 class="bismillah">
-                بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
-            </h3>
+            <p class="hero-small">Together With Their Families</p>
 
-            <h1>Tasmirah</h1>
+            <h1 class="shimmer">Tasmirah</h1>
+            <div class="amp">&</div>
+            <h1 class="shimmer">Shohaib</h1>
 
-            <div class="and">&</div>
-
-            <h1>Shohaib</h1>
-
-            <p class="date">
-                26 September 2026
-            </p>
-
-            <button id="openInvite" class="gold-btn" aria-label="Open wedding invitation">
-                Open Invitation
-            </button>
+            <p class="hero-date">26 September 2026 • 17:00</p>
 
         </div>
-
     </section>
 
-    <!-- ====== INVITATION PAGE 1 ====== -->
-    <section class="invite-section" id="invitation">
-
-        <img
-            src="invite1.jpeg"
-            alt="Wedding Invitation Page 1"
-            class="invite-image"
-            loading="lazy">
-
+    <section class="image-section fade-in">
+        <img src="images/invite1.jpeg" alt="Wedding Invitation Page 1">
     </section>
 
-    <!-- ====== INVITATION PAGE 2 ====== -->
-    <section class="invite-section">
-
-        <img
-            src="invite2.jpeg"
-            alt="Wedding Invitation Page 2"
-            class="invite-image"
-            loading="lazy">
-
+    <section class="quote-section fade-in">
+        <p class="quote">"And We created you in pairs."</p>
+        <p class="ref">Quran 78:8</p>
     </section>
 
-    <!-- ====== COUNTDOWN ====== -->
-    <section class="countdown-section" id="countdown-section">
-
-        <h2>Countdown To Our Nikkah</h2>
+    <section class="countdown-section fade-in">
+        <h2>Countdown</h2>
 
         <div id="countdown">
-
-            <div class="time-box">
-                <span id="days">0</span>
-                <small>Days</small>
-            </div>
-
-            <div class="time-box">
-                <span id="hours">0</span>
-                <small>Hours</small>
-            </div>
-
-            <div class="time-box">
-                <span id="minutes">0</span>
-                <small>Minutes</small>
-            </div>
-
-            <div class="time-box">
-                <span id="seconds">0</span>
-                <small>Seconds</small>
-            </div>
-
+            <div><span id="days">0</span><p>Days</p></div>
+            <div><span id="hours">0</span><p>Hours</p></div>
+            <div><span id="minutes">0</span><p>Minutes</p></div>
+            <div><span id="seconds">0</span><p>Seconds</p></div>
         </div>
-
     </section>
 
-    <!-- ====== BUTTONS ====== -->
-    <section class="buttons-section">
+    <section class="image-section fade-in">
+        <img src="images/invite2.jpeg" alt="Wedding Invitation Page 2">
+    </section>
 
-        <a
-            href="https://maps.app.goo.gl/r66JHzXxkeUWDZUU6"
-            target="_blank"
-            class="gold-btn"
-            aria-label="Get directions to the venue">
+    <section class="action-section fade-in">
+
+        <a class="btn" href="https://maps.app.goo.gl/r66JHzXxkeUWDZUU6" target="_blank">
             📍 Get Directions
         </a>
 
-        <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdLuGi6Ae6XDOpGIzZVr8qZt-eNnEECab3tBJ0PeH8fo2IZ2Q/viewform?usp=publish-editor"
-            target="_blank"
-            class="gold-btn"
-            aria-label="RSVP for the wedding">
-            ✅ RSVP
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdLuGi6Ae6XDOpGIzZVr8qZt-eNnEECab3tBJ0PeH8fo2IZ2Q/viewform" target="_blank">
+            📝 RSVP
         </a>
 
     </section>
 
-    <!-- ====== MUSIC TOGGLE (Optional) ====== -->
-    <button id="musicToggle" aria-label="Toggle background music">
-        🎵
-    </button>
+    <footer class="footer fade-in">
+        <h2>We look forward to celebrating with you</h2>
+        <p>InshaAllah</p>
+    </footer>
 
-    <!-- ====== SCRIPTS ====== -->
-    <script src="script.js"></script>
+</main>
 
+<script src="script.js"></script>
 </body>
-
-</div>
-</html>  
-
+</html>

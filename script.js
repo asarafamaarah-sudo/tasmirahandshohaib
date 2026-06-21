@@ -66,7 +66,7 @@ musicToggle.addEventListener('click', () => {
     if (!audio) {
         // Create audio element with a royalty-free track
         // You can replace this URL with your own audio file
-        audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+        audio = new Audio('your-nasheed.mp3.mpeg');
         audio.loop = true;
         audio.volume = 0.5;
     }

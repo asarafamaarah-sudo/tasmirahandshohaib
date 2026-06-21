@@ -1,303 +1,330 @@
 ﻿body
 {
 }
-body {
+* {
     margin: 0;
-    background: #d8d8c8;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
+html {
+    scroll-behavior: smooth;
 }
 
-.invitation-section {
+body {
+    background: #d9d9c6;
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+}
+
+/* ===== HERO SECTION ===== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 30px;
+    background: linear-gradient(
+        rgba(217, 217, 198, 0.95),
+        rgba(217, 217, 198, 0.95)
+    );
 }
 
-    .invitation-section img {
-        width: 100%;
-        max-width: 800px;
-        height: auto;
-        border-radius: 15px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-
-.buttons {
-    text-align: center;
-    margin: 30px;
+.hero-content {
+    animation: fadeIn 2s ease;
 }
 
-.btn {
+.bismillah {
+    color: #9d7b2f;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: #8c6a22;
+}
+
+.and {
+    font-size: 2rem;
+    color: #8c6a22;
+    margin: 10px 0;
+}
+
+.date {
+    margin-top: 20px;
+    font-size: 1.4rem;
+    color: #234d37;
+}
+
+/* ===== GOLD BUTTONS ===== */
+
+.gold-btn {
     display: inline-block;
-    padding: 15px 25px;
-    margin: 10px;
-    background: #9d7c2f;
+    margin-top: 30px;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    background: #9d7b2f;
     color: white;
     text-decoration: none;
-    border-radius: 10px;
-    font-size: 18px;
-    border: none;
+    font-size: 1.1rem;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(157, 123, 47, 0.3);
+}
+
+.gold-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(157, 123, 47, 0.4);
+    background: #b08d35;
+}
+
+.gold-btn:active {
+    transform: translateY(0px);
+}
+
+/* ===== INVITATION IMAGES ===== */
+
+.invite-section {
+    padding: 40px 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.invite-image {
+    width: 100%;
+    max-width: 650px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.invite-image:hover {
+    transform: scale(1.02);
+}
+
+/* ===== COUNTDOWN ===== */
+
+.countdown-section {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.countdown-section h2 {
+    color: #234d37;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: white;
+    width: 120px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.time-box:hover {
+    transform: translateY(-5px);
+}
+
+.time-box span {
+    display: block;
+    font-size: 2.5rem;
+    color: #8c6a22;
+    font-weight: bold;
+}
+
+.time-box small {
+    color: #234d37;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ===== BUTTONS SECTION ===== */
+
+.buttons-section {
+    text-align: center;
+    padding: 50px 20px 100px;
+}
+
+.buttons-section .gold-btn {
+    margin: 10px;
+    min-width: 200px;
+}
+
+/* ===== MUSIC TOGGLE ===== */
+
+#musicToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    border: none;
+    background: #9d7b2f;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(157, 123, 47, 0.3);
     transition: all 0.3s ease;
 }
 
-    .btn:hover {
-        background: #7d6225;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(157, 124, 47, 0.3);
+#musicToggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(157, 123, 47, 0.5);
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-
-.btn-secondary {
-    background: transparent;
-    color: #9d7c2f;
-    border: 2px solid #9d7c2f;
-}
-
-    .btn-secondary:hover {
-        background: #9d7c2f;
-        color: white;
-    }
-
-/* Admin Section */
-.admin-section {
-    text-align: center;
-    margin: 30px 0 20px;
-    padding: 20px;
-    background: rgba(255,255,255,0.3);
-    border-radius: 15px;
-}
-
-    .admin-section .label {
-        font-size: 11px;
-        color: #7d6225;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        display: block;
-        margin-bottom: 10px;
-        opacity: 0.6;
-    }
-
-.admin-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 5px 10px;
-    background: rgba(157, 124, 47, 0.1);
-    color: #7d6225;
-    border: 1px dashed #9d7c2f;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    font-family: Arial, sans-serif;
-    transition: all 0.2s;
-}
-
-    .admin-btn:hover {
-        background: rgba(157, 124, 47, 0.2);
-        border-style: solid;
-    }
-
-.rsvp-count {
-    background: #9d7c2f;
-    color: white;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-    margin-left: 5px;
-}
-
-.admin-hint {
-    margin-top: 8px;
-    font-size: 11px;
-    color: #9d7c2f;
-    opacity: 0.5;
-}
-
-    .admin-hint kbd {
-        background: white;
-        padding: 2px 10px;
-        border-radius: 4px;
-        font-size: 11px;
-        border: 1px solid #ddd;
-    }
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    padding: 20px;
-}
-
-.modal-content {
-    background: white;
-    max-width: 450px;
-    width: 100%;
-    padding: 35px;
-    border-radius: 20px;
-    position: relative;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-}
-
-.close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    cursor: pointer;
-    color: #aaa;
-    background: none;
-    border: none;
-    font-family: Arial, sans-serif;
-    transition: color 0.2s;
-}
-
-    .close:hover {
-        color: #9d7c2f;
-    }
-
-.modal-content h2 {
-    color: #9d7c2f;
-    margin-bottom: 5px;
-    font-weight: normal;
-}
-
-.modal-content .sub {
-    color: #888;
-    font-size: 14px;
-    margin-bottom: 20px;
-}
-
-.modal-content input,
-.modal-content select {
-    width: 100%;
-    padding: 12px 15px;
-    margin: 10px 0;
-    border: 2px solid #eee;
-    border-radius: 10px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
-}
-
-    .modal-content input:focus,
-    .modal-content select:focus {
-        outline: none;
-        border-color: #9d7c2f;
-    }
-
-.modal-content .submit-btn {
-    background: #9d7c2f;
-    color: white;
-    border: none;
-    padding: 14px;
-    width: 100%;
-    border-radius: 10px;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s;
-}
-
-    .modal-content .submit-btn:hover {
-        background: #7d6225;
-    }
-
-.toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #333;
-    color: white;
-    padding: 14px 28px;
-    border-radius: 50px;
-    font-size: 15px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-    z-index: 1100;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-}
-
-    .toast.show {
+    to {
         opacity: 1;
+        transform: translateY(0);
     }
-
-.venue-details {
-    background: rgba(157, 124, 47, 0.08);
-    padding: 15px 20px;
-    border-radius: 12px;
-    margin: 20px auto;
-    max-width: 600px;
-    text-align: center;
-    border-left: 4px solid #9d7c2f;
 }
 
-    .venue-details p {
-        margin: 5px 0;
-        color: #5a4a2a;
-        font-size: 14px;
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablets & smaller laptops */
+@media (max-width: 768px) {
+
+    .hero h1 {
+        font-size: 3rem;
     }
 
-    .venue-details .venue-name {
-        font-weight: bold;
-        font-size: 16px;
-        color: #7d6225;
+    .bismillah {
+        font-size: 1.6rem;
     }
 
-footer {
-    text-align: center;
-    margin: 30px 0 10px;
-    font-size: 12px;
-    color: #7d6225;
-    opacity: 0.6;
+    .countdown-section h2 {
+        font-size: 2rem;
+    }
+
+    .time-box {
+        width: 100px;
+        padding: 15px;
+    }
+
+    .time-box span {
+        font-size: 2rem;
+    }
+
 }
 
-@media (max-width: 600px) {
-    .invitation-section {
-        padding: 10px;
+/* Mobile phones */
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size: 2.2rem;
     }
 
-    .buttons {
-        margin: 15px;
+    .bismillah {
+        font-size: 1.2rem;
     }
 
-    .btn {
-        padding: 12px 20px;
+    .and {
+        font-size: 1.5rem;
+    }
+
+    .date {
+        font-size: 1rem;
+    }
+
+    .gold-btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+        min-width: 150px;
+    }
+
+    .invite-image {
+        border-radius: 10px;
+    }
+
+    .countdown-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .time-box {
+        width: 80px;
+        padding: 12px 8px;
+    }
+
+    .time-box span {
+        font-size: 1.5rem;
+    }
+
+    .time-box small {
+        font-size: 0.7rem;
+    }
+
+    .buttons-section .gold-btn {
+        display: block;
+        margin: 15px auto;
+        max-width: 250px;
+    }
+
+    #musicToggle {
+        width: 40px;
+        height: 40px;
         font-size: 16px;
-        width: 100%;
-        box-sizing: border-box;
+        bottom: 15px;
+        right: 15px;
     }
 
-    .modal-content {
-        padding: 25px 20px;
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+
+    .hero h1 {
+        font-size: 1.8rem;
     }
 
-    .admin-btn {
-        padding: 8px 15px;
-        font-size: 12px;
-        margin: 5px;
+    .time-box {
+        width: 70px;
+        padding: 10px 5px;
     }
 
-    .venue-details {
-        padding: 12px 15px;
-        margin: 15px 10px;
+    .time-box span {
+        font-size: 1.2rem;
     }
+
+}
+
+/* ===== ACCESSIBILITY ===== */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+.gold-btn:focus-visible,
+#musicToggle:focus-visible {
+    outline: 3px solid #234d37;
+    outline-offset: 3px;
 }

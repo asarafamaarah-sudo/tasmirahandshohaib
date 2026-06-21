@@ -4,6 +4,8 @@
 /* ENVELOPE */
 const envelope = document.getElementById("envelope");
 const openBtn = document.getElementById("openInvite");
+const openingScreen = document.getElementById("openingScreen");
+const mainContent = document.getElementById("mainContent");
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
@@ -14,26 +16,39 @@ openBtn.addEventListener("click", async () => {
     if (opened) return;
     opened = true;
 
+    // Open envelope animation
     envelope.classList.add("open");
 
+    // Try to play music
     try { 
         await music.play(); 
         musicBtn.textContent = "♫ Playing";
     } catch(e) {
-        // Auto-play blocked - user will click play button
         console.log("Auto-play prevented. Click play button.");
     }
 
+    // Hide opening screen and show main content
     setTimeout(() => {
-        document.getElementById("openingScreen").style.opacity = "0";
+        openingScreen.style.opacity = "0";
+        openingScreen.style.transition = "opacity 0.8s ease";
+        
         setTimeout(() => {
-            document.getElementById("openingScreen").style.display = "none";
-        }, 1500);
+            openingScreen.style.display = "none";
+            mainContent.style.display = "block";
+            
+            // Trigger fade-in animations
+            document.querySelectorAll(".fade-in").forEach(el => {
+                setTimeout(() => {
+                    el.classList.add("show");
+                }, 200);
+            });
+            
+        }, 800);
     }, 1200);
 
 });
 
-/* MUSIC */
+/* MUSIC TOGGLE */
 musicBtn.addEventListener("click", async () => {
     if (music.paused) {
         try {
@@ -48,7 +63,7 @@ musicBtn.addEventListener("click", async () => {
     }
 });
 
-/* COUNTDOWN */
+/* COUNTDOWN TIMER */
 const weddingDate = new Date("September 26, 2026 17:00:00").getTime();
 
 setInterval(() => {
@@ -82,7 +97,7 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
-/* REAL PETALS */
+/* FALLING PETALS */
 const petals = [
     "petal1.jpeg",
     "petal2.jpeg",
@@ -97,16 +112,20 @@ function createPetal() {
     img.style.width = (15 + Math.random() * 20) + "px";
     img.style.animation = `fall ${Math.random() * 4 + 5}s linear`;
     img.style.transform = `rotate(${Math.random() * 360}deg)`;
+    img.style.position = "fixed";
+    img.style.top = "-50px";
+    img.style.pointerEvents = "none";
+    img.style.zIndex = "9998";
     
     document.getElementById("petals").appendChild(img);
 
-    setTimeout(() => img.remove(), 9000);
+    setTimeout(() => {
+        if (img.parentNode) img.remove();
+    }, 9000);
 }
 
-// Create petals every 250ms
 setInterval(createPetal, 250);
 
-// Create some petals immediately
 for (let i = 0; i < 8; i++) {
     setTimeout(createPetal, i * 200);
 }

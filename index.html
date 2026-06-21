@@ -31,142 +31,87 @@
 
 <body>
 
-    <!-- ====== OPENING SCREEN ====== -->
-    <section class="hero" id="home">
+    <!-- ====== MUSIC BUTTON ====== -->
+    <button id="musicBtn" class="music-btn">🎵</button>
 
-        <div class="hero-content">
+    <!-- ====== BACKGROUND MUSIC ====== -->
+    <audio id="bgMusic" loop>
+        <source src="your-nasheed.mp3.mpeg" type="audio/mp3">
+    </audio>
 
-            <h3 class="bismillah">
-                بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
-            </h3>
+    <!-- ====== FLOATING PETALS ====== -->
+    <div class="petals"></div>
 
-            <h1>Tasmirah</h1>
+    <!-- ====== OPENING OVERLAY ====== -->
+    <div id="opening" class="opening">
+        <h1>Tasmirah & Shohaib</h1>
+        <p class="opening-date">26 September 2026</p>
+        <button onclick="enterSite()" class="gold-btn">Open Invitation</button>
+    </div>
 
-            <div class="and">&</div>
+    <!-- ====== MAIN CONTENT (Hidden until overlay is closed) ====== -->
+    <div id="mainContent" style="display: none;">
 
-            <h1>Shohaib</h1>
-
-            <p class="date">
-                26 September 2026
-            </p>
-
-            <button id="openInvite" class="gold-btn" aria-label="Open wedding invitation">
-                Open Invitation
-            </button>
-
-        </div>
-
-    </section>
-
-    <!-- ====== INVITATION PAGE 1 ====== -->
-    <section class="invite-section" id="invitation">
-
-        <img
-            src="invite1.jpeg"
-            alt="Wedding Invitation Page 1"
-            class="invite-image"
-            loading="lazy">
-
-    </section>
-
-    <!-- ====== INVITATION PAGE 2 ====== -->
-    <section class="invite-section">
-
-        <img
-            src="invite2.jpeg"
-            alt="Wedding Invitation Page 2"
-            class="invite-image"
-            loading="lazy">
-
-    </section>
-
-    <!-- ====== COUNTDOWN ====== -->
-    <section class="countdown-section" id="countdown-section">
-
-        <h2>Countdown To Our Nikkah</h2>
-
-        <div id="countdown">
-
-            <div class="time-box">
-                <span id="days">0</span>
-                <small>Days</small>
+        <!-- ====== HERO SECTION ====== -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h3 class="bismillah">
+                    بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
+                </h3>
+                <h1>Tasmirah</h1>
+                <div class="and">&</div>
+                <h1>Shohaib</h1>
+                <p class="date">26 September 2026</p>
             </div>
+        </section>
 
-            <div class="time-box">
-                <span id="hours">0</span>
-                <small>Hours</small>
+        <!-- ====== INVITATION PAGE 1 ====== -->
+        <section class="invite-section" id="invitation">
+            <img src="invite1.jpeg" alt="Wedding Invitation Page 1" class="invite-image" loading="lazy">
+        </section>
+
+        <!-- ====== INVITATION PAGE 2 ====== -->
+        <section class="invite-section">
+            <img src="invite2.jpeg" alt="Wedding Invitation Page 2" class="invite-image" loading="lazy">
+        </section>
+
+        <!-- ====== COUNTDOWN ====== -->
+        <section class="countdown-section" id="countdown-section">
+            <h2>Countdown To Our Nikkah</h2>
+            <div id="countdown">
+                <div class="time-box">
+                    <span id="days">0</span>
+                    <small>Days</small>
+                </div>
+                <div class="time-box">
+                    <span id="hours">0</span>
+                    <small>Hours</small>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">0</span>
+                    <small>Minutes</small>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">0</span>
+                    <small>Seconds</small>
+                </div>
             </div>
+        </section>
 
-            <div class="time-box">
-                <span id="minutes">0</span>
-                <small>Minutes</small>
-            </div>
+        <!-- ====== BUTTONS ====== -->
+        <section class="buttons-section">
+            <a href="https://maps.app.goo.gl/r66JHzXxkeUWDZUU6" target="_blank" class="gold-btn" aria-label="Get directions to the venue">
+                📍 Get Directions
+            </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdLuGi6Ae6XDOpGIzZVr8qZt-eNnEECab3tBJ0PeH8fo2IZ2Q/viewform?usp=publish-editor" target="_blank" class="gold-btn" aria-label="RSVP for the wedding">
+                ✅ RSVP
+            </a>
+        </section>
 
-            <div class="time-box">
-                <span id="seconds">0</span>
-                <small>Seconds</small>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ====== BUTTONS ====== -->
-    <section class="buttons-section">
-
-        <a
-            href="https://maps.app.goo.gl/r66JHzXxkeUWDZUU6"
-            target="_blank"
-            class="gold-btn"
-            aria-label="Get directions to the venue">
-            📍 Get Directions
-        </a>
-
-        <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdLuGi6Ae6XDOpGIzZVr8qZt-eNnEECab3tBJ0PeH8fo2IZ2Q/viewform?usp=publish-editor"
-            target="_blank"
-            class="gold-btn"
-            aria-label="RSVP for the wedding">
-            ✅ RSVP
-        </a>
-
-    </section>
-
-    <!-- ====== MUSIC TOGGLE (Optional) ====== -->
-    <button id="musicToggle" aria-label="Toggle background music">
-        🎵
-    </button>
+    </div>
 
     <!-- ====== SCRIPTS ====== -->
     <script src="script.js"></script>
 
 </body>
-    <!-- MAIN CONTENT (after opening overlay) -->
-<div class="container">
-    <!-- Invite Section -->
-    <section class="invite-section">
-        <h2>You're Invited</h2>
-        <p>We joyfully invite you to celebrate our wedding</p>
-        <p class="date">Saturday, December 14, 2024</p>
-        <p class="venue">Grand Ballroom, Royal Palace</p>
-    </section>
-
-    <!-- Countdown Section -->
-    <section class="countdown-section">
-        <h2>Counting Down to Our Big Day</h2>
-        <div id="countdown">
-            <div><span id="days">00</span> Days</div>
-            <div><span id="hours">00</span> Hours</div>
-            <div><span id="minutes">00</span> Mins</div>
-            <div><span id="seconds">00</span> Secs</div>
-        </div>
-    </section>
-
-    <!-- Buttons Section -->
-    <section class="buttons-section">
-        <h2>RSVP & Details</h2>
-        <button onclick="window.location.href='#rsvp'">RSVP Now</button>
-        <button onclick="window.location.href='#details'">View Details</button>
-    </section>
-</div>
 </html>

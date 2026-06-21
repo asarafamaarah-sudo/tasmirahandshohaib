@@ -13,83 +13,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasmirah & Shohaib · Wedding Invitation</title>
+    <title>Tasmirah & Shohaib - Wedding Invitation</title>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+
+    <!-- Smooth Scroll Polyfill for older browsers -->
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js">
+    </script>
 </head>
+
 <body>
 
-    <div class="container">
-        <!-- Invitation Images -->
-        <div class="invitation-section">
-            <img src="images/invite1.jpeg" alt="Wedding Invitation Page 1">
-        </div>
+    <!-- ====== OPENING SCREEN ====== -->
+    <section class="hero" id="home">
 
-        <div class="invitation-section">
-            <img src="images/invite2.jpeg" alt="Wedding Invitation Page 2">
-        </div>
+        <div class="hero-content">
 
-        <!-- Venue Details -->
-        <div class="venue-details">
-            <p class="venue-name">🕌 Musjid Noorul Mustapha</p>
-            <p>9 36TH Ave, Umhlatuzana Township</p>
-            <p>Chatsworth, 4054</p>
-            <p style="font-size:12px; color:#9d7c2f; margin-top:8px;">📅 Saturday, 26th September 2026 · 5:00 PM</p>
-        </div>
+            <h3 class="bismillah">
+                بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
+            </h3>
 
-        <!-- Buttons -->
-        <div class="buttons">
-            <a href="https://maps.google.com/maps?q=Musjid+Noorul+Mustapha+9+36TH+Ave+Umhlatuzana+Township+Chatsworth+4054" target="_blank" class="btn">
-                📍 Get Directions
-            </a>
+            <h1>Tasmirah</h1>
 
-            <button class="btn btn-secondary" id="rsvpButton">
-                ✅ RSVP
+            <div class="and">&</div>
+
+            <h1>Shohaib</h1>
+
+            <p class="date">
+                26 September 2026
+            </p>
+
+            <button id="openInvite" class="gold-btn" aria-label="Open wedding invitation">
+                Open Invitation
             </button>
+
         </div>
 
-        <!-- Admin Section (for the couple) -->
-        <div class="admin-section">
-            <span class="label">✦ Admin ✦</span>
-            <div>
-                <button class="admin-btn" id="downloadBtn">
-                    📥 Download RSVPs <span class="rsvp-count" id="rsvpCount">0</span>
-                </button>
-                <button class="admin-btn" id="clearBtn" style="color:#a0523d; border-color:#a0523d;">
-                    🗑️ Clear All
-                </button>
+    </section>
+
+    <!-- ====== INVITATION PAGE 1 ====== -->
+    <section class="invite-section" id="invitation">
+
+        <img
+            src="images/invite1.jpeg"
+            alt="Wedding Invitation Page 1"
+            class="invite-image"
+            loading="lazy">
+
+    </section>
+
+    <!-- ====== INVITATION PAGE 2 ====== -->
+    <section class="invite-section">
+
+        <img
+            src="images/invite2.jpeg"
+            alt="Wedding Invitation Page 2"
+            class="invite-image"
+            loading="lazy">
+
+    </section>
+
+    <!-- ====== COUNTDOWN ====== -->
+    <section class="countdown-section" id="countdown-section">
+
+        <h2>Countdown To Our Nikkah</h2>
+
+        <div id="countdown">
+
+            <div class="time-box">
+                <span id="days">0</span>
+                <small>Days</small>
             </div>
-            <div class="admin-hint">
-                Press <kbd>D</kbd> key to download RSVPs
+
+            <div class="time-box">
+                <span id="hours">0</span>
+                <small>Hours</small>
             </div>
+
+            <div class="time-box">
+                <span id="minutes">0</span>
+                <small>Minutes</small>
+            </div>
+
+            <div class="time-box">
+                <span id="seconds">0</span>
+                <small>Seconds</small>
+            </div>
+
         </div>
 
-        <footer>
-            Kindly RSVP by 15th August 2026
-        </footer>
-    </div>
+    </section>
 
-    <!-- RSVP Modal -->
-    <div id="rsvpModal" class="modal">
-        <div class="modal-content">
-            <button class="close" id="closeModal">&times;</button>
-            <h2>✨ RSVP ✨</h2>
-            <p class="sub">We look forward to celebrating with you</p>
-            <form id="rsvpForm">
-                <input type="text" id="fullName" placeholder="Your full name" required 
-                <select id="attending">
-                    <option value="yes">Will attend with joy ✨</option>
-                    <option value="no">Unable to attend 💔</option>
-                </select>
-                <input type="number" id="guests" placeholder="Number of guests (including you)" min="1" max="10" value="1">
-                <button type="submit" class="submit-btn">Send RSVP</button>
-            </form>
-            <p style="font-size:12px; color:#aaa; margin-top:15px;">Your response will be saved privately</p>
-        </div>
-    </div>
+    <!-- ====== BUTTONS ====== -->
+    <section class="buttons-section">
 
-    <!-- Toast Notification -->
-    <div id="toast" class="toast">✨ RSVP recorded! Thank you ✨</div>
+        <a
+            href="https://maps.app.goo.gl/r66JHzXxkeUWDZUU6"
+            target="_blank"
+            class="gold-btn"
+            aria-label="Get directions to the venue">
+            📍 Get Directions
+        </a>
 
+        <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdLuGi6Ae6XDOpGIzZVr8qZt-eNnEECab3tBJ0PeH8fo2IZ2Q/viewform?usp=publish-editor"
+            target="_blank"
+            class="gold-btn"
+            aria-label="RSVP for the wedding">
+            ✅ RSVP
+        </a>
+
+    </section>
+
+    <!-- ====== MUSIC TOGGLE (Optional) ====== -->
+    <button id="musicToggle" aria-label="Toggle background music">
+        🎵
+    </button>
+
+    <!-- ====== SCRIPTS ====== -->
     <script src="script.js"></script>
+
 </body>
 </html>

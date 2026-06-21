@@ -369,7 +369,7 @@ body::before {
     transform: translateY(0);
 }
 
-/* PETALS */
+/* PETALS - using your petal images */
 #petals {
     position: fixed;
     top: 0;

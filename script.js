@@ -1,209 +1,138 @@
 // JavaScript source code
 // DOM elements
 // Get elements
-const rsvpModal = document.getElementById('rsvpModal');
-const rsvpBtn = document.getElementById('rsvpButton');
-const closeModal = document.getElementById('closeModal');
-const rsvpForm = document.getElementById('rsvpForm');
-const toast = document.getElementById('toast');
-const downloadBtn = document.getElementById('downloadBtn');
-const clearBtn = document.getElementById('clearBtn');
-const rsvpCountSpan = document.getElementById('rsvpCount');
+// ===== OPEN INVITATION BUTTON =====
 
-// Storage key
-const STORAGE_KEY = 'tasmirah_shohaib_rsvps';
+document.getElementById('openInvite').addEventListener('click', () => {
 
-// Show toast notification
-function showToast(message, duration = 3000) {
-    toast.textContent = message;
-    toast.classList.add('show');
-    clearTimeout(toast._timeout);
-    toast._timeout = setTimeout(() => {
-        toast.classList.remove('show');
-    }, duration);
-}
+    const inviteSection = document.querySelector('.invite-section');
 
-// Update RSVP counter
-function updateRSVPCounter() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-        try {
-            const rsvps = JSON.parse(saved);
-            rsvpCountSpan.textContent = rsvps.length;
-        } catch (e) {
-            rsvpCountSpan.textContent = '0';
-        }
-    } else {
-        rsvpCountSpan.textContent = '0';
-    }
-}
-
-// Get all RSVPs
-function getRSVPs() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return [];
-    try {
-        return JSON.parse(saved);
-    } catch (e) {
-        return [];
-    }
-}
-
-// Save RSVP
-function saveRSVP(name, email, attending, guests) {
-    const rsvpEntry = {
-        name: name.trim(),
-        email: email.trim(),
-        attending: attending === 'yes' ? 'Attending' : 'Not attending',
-        guests: parseInt(guests) || 1,
-        date: new Date().toLocaleString()
-    };
-
-    let rsvps = getRSVPs();
-    rsvps.push(rsvpEntry);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(rsvps));
-    updateRSVPCounter();
-    return rsvps.length;
-}
-
-// Download RSVPs as text file
-function downloadRSVPs() {
-    const rsvps = getRSVPs();
-
-    if (rsvps.length === 0) {
-        showToast('📭 No RSVPs have been submitted yet.');
-        return;
-    }
-
-    let attendingCount = 0;
-    let notAttendingCount = 0;
-    let totalGuests = 0;
-
-    let output = "═══════════════════════════════════════════════════════════════\n";
-    output += "          WEDDING RSVP LIST — Tasmirah & Shohaib\n";
-    output += "═══════════════════════════════════════════════════════════════\n\n";
-    output += `📆 Generated: ${new Date().toLocaleString()}\n`;
-    output += `👥 Total Responses: ${rsvps.length}\n`;
-    output += "───────────────────────────────────────────────────────────────\n\n";
-
-    rsvps.forEach((rsvp, idx) => {
-        if (rsvp.attending === 'Attending') {
-            attendingCount++;
-            totalGuests += rsvp.guests || 1;
-        } else {
-            notAttendingCount++;
-        }
-
-        const statusSymbol = rsvp.attending === 'Attending' ? '✅ ATTENDING' : '❌ NOT ATTENDING';
-
-        output += `[${idx + 1}] 👤 ${rsvp.name}\n`;
-        output += `    📋 Status: ${statusSymbol}\n`;
-        output += `    👥 Guests: ${rsvp.guests || 1}\n`;
-        output += `    📧 Email: ${rsvp.email || '— not provided —'}\n`;
-        output += `    🕊️ Submitted: ${rsvp.date}\n`;
-        output += `    ${"~".repeat(63)}\n\n`;
+    inviteSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
     });
 
-    output += "───────────────────────────────────────────────────────────────\n";
-    output += `📊 SUMMARY:\n`;
-    output += `   ✅ Attending: ${attendingCount} (${totalGuests} total guests)\n`;
-    output += `   ❌ Not Attending: ${notAttendingCount}\n`;
-    output += `   📝 Total Responses: ${rsvps.length}\n`;
-    output += "═══════════════════════════════════════════════════════════════\n";
-    output += `✨ May Allah bless this union — Thank you for your warm wishes. ✨\n`;
-    output += "═══════════════════════════════════════════════════════════════\n";
+});
 
-    // Create and download file
-    const blob = new Blob([output], { type: 'text/plain;charset=utf-8' });
-    const link = document.createElement('a');
-    const url = URL.createObjectURL(blob);
-    link.href = url;
-    const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
-    link.download = `tasmirah_shohaib_rsvps_${timestamp}.txt`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+// ===== COUNTDOWN TIMER =====
 
-    showToast(`📁 Downloaded ${rsvps.length} RSVP(s) as text file`);
-}
+const weddingDate = new Date('September 26, 2026 17:00:00').getTime();
 
-// Clear all RSVPs
-function clearAllRSVPs() {
-    const rsvps = getRSVPs();
-    if (rsvps.length === 0) {
-        showToast('No RSVPs to clear');
+function updateCountdown() {
+
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    // If wedding date has passed
+    if (distance < 0) {
+
+        clearInterval(timer);
+
+        document.getElementById('countdown').innerHTML =
+            '<h2 style="color: #8c6a22; font-size: 2rem;">Our Special Day Has Arrived ❤️</h2>';
+
         return;
     }
 
-    if (confirm('⚠️ Are you sure you want to permanently DELETE all RSVP responses? This cannot be undone.')) {
-        localStorage.removeItem(STORAGE_KEY);
-        updateRSVPCounter();
-        showToast('🗑️ All RSVPs have been cleared');
-    }
+    // Calculate time units
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Update DOM with padding for single digits
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
 }
 
-// Open RSVP modal
-rsvpBtn.onclick = () => {
-    rsvpModal.style.display = 'flex';
-};
+// Start countdown
+const timer = setInterval(updateCountdown, 1000);
 
-// Close modal
-closeModal.onclick = () => {
-    rsvpModal.style.display = 'none';
-};
+// Initial call to avoid 1-second delay
+updateCountdown();
 
-// Close modal when clicking outside
-window.onclick = (e) => {
-    if (e.target === rsvpModal) {
-        rsvpModal.style.display = 'none';
-    }
-};
+// ===== MUSIC TOGGLE (Optional Feature) =====
 
-// Handle RSVP form submission
-rsvpForm.onsubmit = (e) => {
-    e.preventDefault();
+let isMusicPlaying = false;
+let audio = null;
 
-    const name = document.getElementById('fullName').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const attending = document.getElementById('attending').value;
-    const guests = document.getElementById('guests').value || 1;
+const musicToggle = document.getElementById('musicToggle');
 
-    if (!name) {
-        showToast('💌 Please enter your name', 2000);
-        return;
+musicToggle.addEventListener('click', () => {
+
+    if (!audio) {
+        // Create audio element with a royalty-free track
+        // You can replace this URL with your own audio file
+        audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+        audio.loop = true;
+        audio.volume = 0.5;
     }
 
-    const total = saveRSVP(name, email, attending, guests);
-    const attendanceMsg = attending === 'yes' ? 'join us in celebration ✨' : 'we will miss you 💐';
+    if (isMusicPlaying) {
+        audio.pause();
+        musicToggle.textContent = '🎵';
+        musicToggle.style.background = '#9d7b2f';
+    } else {
+        audio.play().catch(() => {
+            // Auto-play was blocked - show a message or do nothing
+            console.log('Please interact with the page to play music.');
+        });
+        musicToggle.textContent = '🔊';
+        musicToggle.style.background = '#234d37';
+    }
 
-    showToast(`🌸 Thank you ${name}! You will ${attendanceMsg} (${total} total RSVPs)`, 3500);
+    isMusicPlaying = !isMusicPlaying;
 
-    rsvpForm.reset();
-    document.getElementById('guests').value = '1';
-    rsvpModal.style.display = 'none';
-};
+});
 
-// Download button
-downloadBtn.onclick = downloadRSVPs;
+// ===== SMOOTH SCROLL FOR ALL ANCHOR LINKS =====
 
-// Clear button
-clearBtn.onclick = clearAllRSVPs;
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-// Keyboard shortcut: Press 'D' to download
-document.onkeydown = (e) => {
-    if (e.key === 'd' || e.key === 'D') {
-        const activeTag = document.activeElement?.tagName?.toLowerCase();
-        if (activeTag !== 'input' && activeTag !== 'textarea' && activeTag !== 'select') {
+    anchor.addEventListener('click', function(e) {
+
+        const href = this.getAttribute('href');
+
+        if (href !== '#') {
+
             e.preventDefault();
-            downloadRSVPs();
+
+            const target = document.querySelector(href);
+
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+
         }
+
+    });
+
+});
+
+// ===== SHOW HERO SECTION ON PAGE LOAD =====
+
+window.addEventListener('load', () => {
+    // Small animation delay for hero content
+    document.querySelector('.hero-content').style.animation = 'fadeIn 1.5s ease';
+});
+
+// ===== KEYBOARD SHORTCUTS =====
+
+document.addEventListener('keydown', (e) => {
+
+    // Press 'I' to open invitation
+    if (e.key === 'i' || e.key === 'I') {
+        document.getElementById('openInvite').click();
     }
-};
 
-// Initialize counter
-updateRSVPCounter();
+    // Press 'M' to toggle music
+    if (e.key === 'm' || e.key === 'M') {
+        musicToggle.click();
+    }
 
-console.log('💍 Tasmirah & Shohaib Wedding Invitation ready!');
-console.log('📍 Venue: Musjid Noorul Mustapha, Chatsworth');
-console.log('📥 Click "Download RSVPs" or press D key to save responses');
+});

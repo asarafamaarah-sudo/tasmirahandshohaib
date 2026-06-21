@@ -97,11 +97,11 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
-/* FALLING PETALS */
+/* FALLING PETALS - using your petal images */
 const petals = [
-    "petal1.jpeg",
-    "petal2.jpeg",
-    "petal3.jpeg"
+    "images/petal1.jpeg",
+    "images/petal2.jpeg",
+    "images/petal3.jpeg"
 ];
 
 function createPetal() {
@@ -124,8 +124,10 @@ function createPetal() {
     }, 9000);
 }
 
+// Create petals every 250ms
 setInterval(createPetal, 250);
 
+// Create some initial petals
 for (let i = 0; i < 8; i++) {
     setTimeout(createPetal, i * 200);
 }
@@ -133,3 +135,4 @@ for (let i = 0; i < 8; i++) {
 console.log("💍 Tasmirah & Shohaib | Wedding Invitation");
 console.log("📍 Musjid Noorul Mustapha, Chatsworth");
 console.log("📅 26 September 2026");
+console.log("✨ Tap the wax seal to open the invitation!");

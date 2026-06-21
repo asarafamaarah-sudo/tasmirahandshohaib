@@ -56,7 +56,7 @@ body::before {
     align-items: center;
     justify-content: center;
     z-index: 99999;
-    transition: opacity 1s ease;
+    transition: opacity 0.8s ease;
 }
 
 .center {
@@ -72,46 +72,87 @@ body::before {
     font-weight: 500;
 }
 
-/* ENVELOPE IMAGE */
+/* ENVELOPE CONTAINER */
 .envelope-container {
     position: relative;
     width: 320px;
-    margin: auto;
-    cursor: pointer;
+    margin: 0 auto;
+    cursor: default;
 }
 
+/* YOUR ENVELOPE IMAGE */
 .envelope-img {
     width: 100%;
+    max-width: 320px;
     border-radius: 12px;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-    transition: transform 0.8s ease;
+    transition: transform 0.8s ease, filter 0.8s ease;
     display: block;
 }
 
-/* Wax seal */
+/* WAX SEAL BUTTON - positioned over the wax seal in your image */
 .wax-seal {
     position: absolute;
-    bottom: 22%;
-    left: 50%;
+    /* ⚠️ ADJUST THESE VALUES TO MATCH YOUR WAX SEAL POSITION ⚠️ */
+    bottom: 22%;      /* Distance from bottom of envelope */
+    left: 50%;        /* Center horizontally */
     transform: translateX(-50%);
-    width: 55px;
-    height: 55px;
+    
+    /* Transparent clickable area */
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     border: none;
-    background: radial-gradient(#d4af37, #c49a3a);
-    color: #fff;
+    background: transparent;
     cursor: pointer;
-    font-size: 22px;
     z-index: 10;
-    box-shadow: 0 4px 20px rgba(196, 154, 58, 0.4);
-    transition: transform 0.3s;
+    
+    /* Visual feedback - subtle glow on hover */
+    transition: all 0.3s;
 }
 
 .wax-seal:hover {
     transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
 }
 
-/* Letter */
+/* Optional: Add a pulsing animation to draw attention */
+.wax-seal::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* Hide wax seal pulse after opening */
+.envelope-container.open .wax-seal::after {
+    display: none;
+}
+
+.envelope-container.open .wax-seal {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+/* LETTER */
 .letter {
     position: absolute;
     top: 30%;
@@ -126,6 +167,7 @@ body::before {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     text-align: center;
     pointer-events: none;
+    z-index: 5;
 }
 
 .letter p {
@@ -157,17 +199,29 @@ body::before {
     filter: brightness(0.98);
 }
 
-.envelope-container.open .wax-seal {
-    opacity: 0;
-    pointer-events: none;
-}
-
 .tap {
     color: #9d7b2f;
     font-size: 14px;
     margin-top: 20px;
     opacity: 0.7;
     letter-spacing: 1px;
+}
+
+/* MAIN CONTENT - initially hidden */
+#mainContent {
+    display: none;
+    animation: fadeInContent 1s ease;
+}
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* HERO */
@@ -315,7 +369,7 @@ body::before {
     transform: translateY(0);
 }
 
-/* PETALS - FALLING ANIMATION */
+/* PETALS */
 #petals {
     position: fixed;
     top: 0;
@@ -358,9 +412,8 @@ body::before {
     }
 
     .wax-seal {
-        width: 45px;
-        height: 45px;
-        font-size: 18px;
+        width: 50px;
+        height: 50px;
         bottom: 20%;
     }
 

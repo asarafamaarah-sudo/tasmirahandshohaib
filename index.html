@@ -23,97 +23,112 @@
 
 <body>
 
-<!-- Floral overlay background -->
+<!-- Intro Screen -->
+<div id="introScreen"></div>
+
+<!-- Floating Petals -->
 <div id="petals"></div>
 
 <!-- Music -->
 <audio id="bgMusic" loop>
-    <source src="audio/your-nasheed.mp3.mpeg" type="audio/mpeg">
+    <source src="your-nasheed.mp3.mpeg" type="audio/mpeg">
 </audio>
 
 <button id="musicBtn" class="music-btn">♫ Play Nasheed</button>
 
-<!-- OPENING SCREEN -->
+<!-- Opening Screen -->
 <div id="openingScreen">
 
-    <div class="center">
+    <div class="opening-content">
 
         <p class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
 
-        <div class="envelope-container" id="envelope">
+        <div class="envelope-wrapper">
 
-            <!-- YOUR ENVELOPE IMAGE WITH WAX SEAL -->
-            <img src="images/envelope.jpeg" class="envelope-img" alt="Envelope"/>
+            <div class="envelope" id="envelope">
 
-            <!-- Wax Seal BUTTON - positioned over the wax seal in your image -->
-            <button id="openInvite" class="wax-seal"></button>
+                <div class="envelope-flap"></div>
 
-            <!-- Hidden Letter -->
-            <div class="letter">
-                <p>You are invited to the Nikah of</p>
-                <h1>Tasmirah</h1>
-                <div class="amp">&</div>
-                <h1>Shohaib</h1>
-                <p>26 September 2026</p>
+                <div class="letter">
+                    <p>You are invited to the Nikah of</p>
+
+                    <h1 class="letter-name">Tasmirah</h1>
+                    <div class="ampersand">&</div>
+                    <h1 class="letter-name">Shohaib</h1>
+
+                    <p>26 September 2026</p>
+                </div>
+
+                <button id="openInvite" class="wax-seal">✦</button>
+
             </div>
-
         </div>
 
-        <p class="tap">✨ Tap wax seal to open ✨</p>
+        <p class="tap-text">Tap wax seal to open</p>
 
     </div>
 </div>
 
 <!-- MAIN CONTENT -->
-<main id="mainContent" style="display:none;">
+<main id="mainContent">
 
     <section class="hero fade-in">
+        <div class="hero-content">
 
-        <h1 class="name">Tasmirah</h1>
-        <div class="ampersand">&</div>
-        <h1 class="name">Shohaib</h1>
+            <p class="hero-small">Together With Their Families</p>
 
-        <p class="date">26 September 2026 • 17:00</p>
+            <h1 class="shimmer">Tasmirah</h1>
+            <div class="amp">&</div>
+            <h1 class="shimmer">Shohaib</h1>
 
+            <p class="hero-date">26 September 2026 • 17:00</p>
+
+        </div>
     </section>
 
-    <section class="image fade-in">
-        <img src="images/invite1.jpeg" alt="Wedding Invitation Page 1">
+    <section class="image-section fade-in">
+        <img src="invite1.jpeg" alt="Wedding Invitation Page 1">
     </section>
 
-    <section class="quote fade-in">
-        <p>"And We created you in pairs."</p>
-        <span>Quran 78:8</span>
+    <section class="quote-section fade-in">
+        <p class="quote">"And among His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy. Indeed, in that are signs for a people who give thought."</p>
+        <p class="ref">Quran 30:21</p>
     </section>
 
-    <section class="countdown fade-in">
+    <section class="countdown-section fade-in">
+        <h2>Countdown</h2>
 
-        <div class="box"><span id="days">0</span><p>Days</p></div>
-        <div class="box"><span id="hours">0</span><p>Hours</p></div>
-        <div class="box"><span id="minutes">0</span><p>Minutes</p></div>
-        <div class="box"><span id="seconds">0</span><p>Seconds</p></div>
-
+        <div id="countdown">
+            <div><span id="days">0</span><p>Days</p></div>
+            <div><span id="hours">0</span><p>Hours</p></div>
+            <div><span id="minutes">0</span><p>Minutes</p></div>
+            <div><span id="seconds">0</span><p>Seconds</p></div>
+        </div>
     </section>
 
-    <section class="image fade-in">
-        <img src="images/invite2.jpeg" alt="Wedding Invitation Page 2">
+    <section class="image-section fade-in">
+        <img src="invite2.jpeg" alt="Wedding Invitation Page 2">
     </section>
 
-    <section class="buttons fade-in">
+    <section class="action-section fade-in">
 
-        <a href="https://maps.app.goo.gl/r66JHzXxkeUWDZUU6" target="_blank" class="btn">
-            📍 Directions
+        <a class="btn" href="https://maps.app.goo.gl/r66JHzXxkeUWDZUU6" target="_blank">
+            📍 Get Directions
         </a>
 
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdLuGi6Ae6XDOpGIzZVr8qZt-eNnEECab3tBJ0PeH8fo2IZ2Q/viewform" target="_blank" class="btn">
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdLuGi6Ae6XDOpGIzZVr8qZt-eNnEECab3tBJ0PeH8fo2IZ2Q/viewform" target="_blank">
             📝 RSVP
         </a>
 
     </section>
 
+    <footer class="footer fade-in">
+        <h2>We look forward to celebrating with you</h2>
+        <p>InshaAllah</p>
+    </footer>
+
 </main>
 
 <script src="script.js"></script>
-
 </body>
 </html>

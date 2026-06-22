@@ -1,40 +1,79 @@
 // JavaScript source code
 // DOM elements
 // Get elements
-const openBtn = document.getElementById("openInvite");
+/* ENVELOPE VIDEO */
 const envelope = document.getElementById("envelope");
+const envelopeVideo = document.getElementById("envelopeVideo");
+const openBtn = document.getElementById("openInvite");
 const openingScreen = document.getElementById("openingScreen");
-
+const mainContent = document.getElementById("mainContent");
+const petalsVideo = document.getElementById("petalsVideo");
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
 let opened = false;
 
-/* Open Envelope */
+// Make sure petals video plays
+if (petalsVideo) {
+    petalsVideo.play().catch(e => console.log("Petals video autoplay prevented"));
+}
+
 openBtn.addEventListener("click", async () => {
+
     if (opened) return;
     opened = true;
 
-    envelope.classList.add("open");
+    // Play envelope opening video
+    envelopeVideo.play();
 
-    /* Play music automatically */
+    // Try to play music
     try { 
         await music.play(); 
         musicBtn.textContent = "♫ Playing";
     } catch(e) {
-        // Auto-play blocked by browser - user will click play
         console.log("Auto-play prevented. Click play button.");
     }
 
-    setTimeout(() => {
+    // Add opened class to envelope
+    envelope.classList.add("opened");
+
+    // Listen for video to end
+    envelopeVideo.addEventListener("ended", () => {
+        // Hide opening screen and show main content
         openingScreen.style.opacity = "0";
+        openingScreen.style.transition = "opacity 0.8s ease";
+        
         setTimeout(() => {
             openingScreen.style.display = "none";
-        }, 1500);
-    }, 1200);
+            mainContent.style.display = "block";
+            
+            // Trigger fade-in animations
+            document.querySelectorAll(".fade-in").forEach(el => {
+                setTimeout(() => {
+                    el.classList.add("show");
+                }, 200);
+            });
+            
+        }, 800);
+    });
+
+    // Fallback: if video doesn't end (error or short video), show content after 3 seconds
+    setTimeout(() => {
+        if (openingScreen.style.display !== "none") {
+            openingScreen.style.opacity = "0";
+            setTimeout(() => {
+                openingScreen.style.display = "none";
+                mainContent.style.display = "block";
+                document.querySelectorAll(".fade-in").forEach(el => {
+                    el.classList.add("show");
+                });
+            }, 800);
+        }
+    }, 5000);
+
 });
 
-/* Music toggle */
+/* MUSIC TOGGLE */
 musicBtn.addEventListener("click", async () => {
     if (music.paused) {
         try {
@@ -49,12 +88,13 @@ musicBtn.addEventListener("click", async () => {
     }
 });
 
-/* Countdown Timer */
+/* COUNTDOWN TIMER */
 const weddingDate = new Date("September 26, 2026 17:00:00").getTime();
 
 setInterval(() => {
-    const now = new Date().getTime();
-    const distance = weddingDate - now;
+
+    let now = new Date().getTime();
+    let distance = weddingDate - now;
 
     if (distance < 0) {
         document.getElementById("days").textContent = "0";
@@ -64,14 +104,14 @@ setInterval(() => {
         return;
     }
 
-    document.getElementById("days").textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
-    document.getElementById("hours").textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    document.getElementById("minutes").textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    document.getElementById("seconds").textContent = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("days").textContent = Math.floor(distance / 86400000);
+    document.getElementById("hours").textContent = Math.floor((distance % 86400000) / 3600000);
+    document.getElementById("minutes").textContent = Math.floor((distance % 3600000) / 60000);
+    document.getElementById("seconds").textContent = Math.floor((distance % 60000) / 1000);
 
 }, 1000);
 
-/* Fade-in animation on scroll */
+/* FADE IN ON SCROLL */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -82,34 +122,7 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
-/* Floating Petals */
-function createPetal() {
-    const p = document.createElement("div");
-    const petals = ["🌸", "🌹", "🌺", "🌷", "🌻", "🌸", "🌹"];
-    p.innerHTML = petals[Math.floor(Math.random() * petals.length)];
-    p.style.position = "fixed";
-    p.style.left = Math.random() * 100 + "vw";
-    p.style.top = "-50px";
-    p.style.fontSize = (20 + Math.random() * 20) + "px";
-    p.style.zIndex = "9998";
-    p.style.pointerEvents = "none";
-    p.style.animation = `fall ${5 + Math.random() * 4}s linear forwards`;
-    p.style.opacity = 0.6 + Math.random() * 0.4;
-    document.body.appendChild(p);
-    
-    setTimeout(() => {
-        if (p.parentNode) p.remove();
-    }, 9000);
-}
-
-// Create petals every 400ms
-setInterval(createPetal, 400);
-
-// Create some petals immediately
-for (let i = 0; i < 5; i++) {
-    setTimeout(createPetal, i * 200);
-}
-
 console.log("💍 Tasmirah & Shohaib | Wedding Invitation");
 console.log("📍 Musjid Noorul Mustapha, Chatsworth");
 console.log("📅 26 September 2026");
+console.log("🎬 Tap the wax seal to watch the envelope open!");

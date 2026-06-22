@@ -74,19 +74,19 @@ openBtn.addEventListener("click", async () => {
 });
 
 /* MUSIC TOGGLE */
-const nasheedVideo = document.getElementById('nasheedVideo');
-if (nasheedVideo) {
-    musicBtn.addEventListener('click', async () => {
-        if (nasheedVideo.paused) {
-            await nasheedVideo.play();
-            musicBtn.textContent = '♫ Playing';
-        } else {
-            nasheedVideo.pause();
-            musicBtn.textContent = '♫ Play Nasheed';
+musicBtn.addEventListener("click", async () => {
+    if (music.paused) {
+        try {
+            await music.play();
+            musicBtn.textContent = "♫ Playing";
+        } catch(e) {
+            musicBtn.textContent = "♫ Play Nasheed";
         }
-    });
-}
-*/
+    } else {
+        music.pause();
+        musicBtn.textContent = "♫ Play Nasheed";
+    }
+});
 
 /* COUNTDOWN TIMER */
 const weddingDate = new Date("September 26, 2026 17:00:00").getTime();

@@ -252,14 +252,14 @@ body::before {
 .quote p {
     font-family: 'Great Vibes', cursive;
     font-size: 36px;
-    color: #9d7b2f;
+    color: #f6f4ee;
     max-width: 600px;
     margin: 0 auto;
 }
 
 .quote span {
     font-size: 16px;
-    color: #234d37;
+    color: #f6f4ee;
     opacity: 0.6;
     display: block;
     margin-top: 10px;

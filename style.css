@@ -225,8 +225,8 @@ body::before {
 
 /* Scroll hint after names */
 .scroll-hint {
-    font-size: 20px;
-    color: #234d37;
+    font-size: 36px;
+    color: #7a1f1f;
     opacity: 0.6;
     margin-top: 40px;
     animation: bounceArrow 2s infinite;

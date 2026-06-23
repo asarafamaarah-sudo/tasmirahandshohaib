@@ -8,6 +8,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Cormorant Garamond', serif;
     background: #f6f4ee;
@@ -189,6 +193,41 @@ body::before {
     }
 }
 
+/* SCROLL INDICATOR - appears at top of main content */
+.scroll-indicator {
+    text-align: center;
+    padding: 30px 20px 10px;
+    animation: bounceArrow 2s infinite;
+}
+
+.scroll-indicator span {
+    display: block;
+    font-size: 14px;
+    color: #9d7b2f;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.scroll-arrow {
+    width: 24px;
+    height: 24px;
+    margin: 10px auto 0;
+    border-right: 2px solid #9d7b2f;
+    border-bottom: 2px solid #9d7b2f;
+    transform: rotate(45deg);
+    opacity: 0.7;
+}
+
+@keyframes bounceArrow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
 /* HERO */
 .hero {
     min-height: 100vh;
@@ -221,6 +260,22 @@ body::before {
     margin-top: 20px;
     font-weight: 300;
     letter-spacing: 2px;
+}
+
+@keyframes shimmer {
+    0% { text-shadow: 0 0 10px rgba(196, 154, 58, 0.3); }
+    50% { text-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+    100% { text-shadow: 0 0 10px rgba(196, 154, 58, 0.3); }
+}
+
+/* Scroll hint after names */
+.scroll-hint {
+    font-size: 14px;
+    color: #9d7b2f;
+    opacity: 0.6;
+    margin-top: 40px;
+    animation: bounceArrow 2s infinite;
+    letter-spacing: 1px;
 }
 
 @keyframes shimmer {
@@ -323,6 +378,37 @@ body::before {
     box-shadow: 0 8px 30px rgba(157, 123, 47, 0.3);
 }
 
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 40px 20px 60px;
+}
+
+.footer p {
+    font-size: 20px;
+    color: #234d37;
+    opacity: 0.7;
+}
+
+/* Scroll to Top Button */
+.scroll-top-btn {
+    margin-top: 30px;
+    padding: 10px 25px;
+    background: transparent;
+    border: 1px solid #9d7b2f;
+    color: #9d7b2f;
+    border-radius: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.scroll-top-btn:hover {
+    background: #9d7b2f;
+    color: #fff;
+}
+
 /* FADE */
 .fade-in {
     opacity: 0;
@@ -375,5 +461,9 @@ body::before {
 
     .arabic {
         font-size: 20px;
+    }
+
+    .scroll-indicator span {
+        font-size: 12px;
     }
 }

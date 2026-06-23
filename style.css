@@ -225,7 +225,7 @@ body::before {
 
 /* Scroll hint after names */
 .scroll-hint {
-    font-size: 26px;
+    font-size: 36px;
     color: #7a1f1f;
     opacity: 0.6;
     margin-top: 40px;

@@ -217,7 +217,7 @@ body::before {
 
 .date {
     font-size: 22px;
-    color: #9d7b2f;
+    color: #234d37;
     margin-top: 20px;
     font-weight: 300;
     letter-spacing: 2px;
@@ -226,7 +226,7 @@ body::before {
 /* Scroll hint after names */
 .scroll-hint {
     font-size: 14px;
-    color: #7a1f1f;
+    color: #234d37;
     opacity: 0.6;
     margin-top: 40px;
     animation: bounceArrow 2s infinite;

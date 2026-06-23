@@ -10,7 +10,6 @@ const mainContent = document.getElementById("mainContent");
 const petalsVideo = document.getElementById("petalsVideo");
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
-const scrollToTopBtn = document.getElementById("scrollToTop");
 
 let opened = false;
 
@@ -58,17 +57,6 @@ openBtn.addEventListener("click", async () => {
         }, 800);
     });
 
-    // After content appears, show scroll indicator
-            setTimeout(() => {
-                const indicator = document.getElementById("scrollIndicator");
-                if (indicator) {
-                    indicator.style.opacity = "1";
-                }
-            }, 1000);
-            
-        }, 800);
-    });
-
     // Fallback: if video doesn't end (error or short video), show content after 3 seconds
     setTimeout(() => {
         if (openingScreen.style.display !== "none") {
@@ -99,34 +87,6 @@ musicBtn.addEventListener("click", async () => {
         musicBtn.textContent = "♫ Play Nasheed";
     }
 });
-
-/* SCROLL TO TOP BUTTON */
-scrollToTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
-
-/* Hide/Show Scroll to Top button based on scroll position */
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 500) {
-        scrollToTopBtn.style.display = "block";
-        scrollToTopBtn.style.opacity = "1";
-    } else {
-        scrollToTopBtn.style.opacity = "0";
-        setTimeout(() => {
-            if (window.scrollY <= 500) {
-                scrollToTopBtn.style.display = "none";
-            }
-        }, 300);
-    }
-});
-
-// Initially hide scroll to top button
-scrollToTopBtn.style.display = "none";
-scrollToTopBtn.style.opacity = "0";
-scrollToTopBtn.style.transition = "opacity 0.3s";
 
 /* COUNTDOWN TIMER */
 const weddingDate = new Date("September 26, 2026 17:00:00").getTime();
@@ -166,4 +126,3 @@ console.log("💍 Tasmirah & Shohaib | Wedding Invitation");
 console.log("📍 Musjid Noorul Mustapha, Chatsworth");
 console.log("📅 26 September 2026");
 console.log("🎬 Tap the wax seal to watch the envelope open!");
-console.log("📜 Scroll down to see the full invitation!");

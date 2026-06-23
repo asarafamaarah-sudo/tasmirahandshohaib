@@ -63,6 +63,12 @@
 <!-- MAIN CONTENT -->
 <main id="mainContent" style="display:none;">
 
+    <!-- SCROLL INDICATOR - appears at top of main content -->
+    <div class="scroll-indicator" id="scrollIndicator">
+        <span>↓ Scroll Down ↓</span>
+        <div class="scroll-arrow"></div>
+    </div>
+    
     <section class="hero fade-in">
 
         <h1 class="name">Tasmirah</h1>
@@ -71,6 +77,9 @@
 
         <p class="date">26 September 2026 • 17:00</p>
 
+        <!-- Small scroll hint after names -->
+        <p class="scroll-hint">↓ Scroll to explore more ↓</p>
+        
     </section>
 
     <section class="image fade-in">
@@ -107,6 +116,16 @@
 
     </section>
 
+    <!-- Footer with scroll to top button -->
+    <footer class="footer fade-in">
+        <p>We look forward to celebrating with you</p>
+        <p style="font-size:14px; opacity:0.5;">InshaAllah</p>
+        
+        <button id="scrollToTop" class="scroll-top-btn" title="Back to top">
+            ↑ Back to Top
+        </button>
+    </footer>
+    
 </main>
 
 <script src="script.js"></script>

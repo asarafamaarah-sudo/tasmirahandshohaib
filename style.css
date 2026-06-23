@@ -217,10 +217,20 @@ body::before {
 
 .date {
     font-size: 22px;
-    color: #7a1f1f;
+    color: #9d7b2f;
     margin-top: 20px;
     font-weight: 300;
     letter-spacing: 2px;
+}
+
+/* Scroll hint after names */
+.scroll-hint {
+    font-size: 14px;
+    color: #7a1f1f;
+    opacity: 0.6;
+    margin-top: 40px;
+    animation: bounceArrow 2s infinite;
+    letter-spacing: 1px;
 }
 
 @keyframes shimmer {
